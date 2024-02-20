@@ -34,9 +34,18 @@
   in {
     devShells = forEachSystem (system: devShellFor system);
 
+    overlay = forEachSystem(system: 
+      let
+        pkgs = pkgsFor.${system};
+      in final: prev: {
+        chiags = (pkgs.callPackage ./. { inherit inputs; }).desktop.script;
+      });
+
     packages = forEachSystem(system: 
-    let pkgs = pkgsFor.${system}; in {
-      default = (pkgs.callPackage ./. { inherit inputs; }).desktop.script;
-    });
+      let
+        pkgs = pkgsFor.${system};
+      in {
+        default = (pkgs.callPackage ./. { inherit inputs; }).desktop.script;
+      });
   };
 }
