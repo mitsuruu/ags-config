@@ -4,7 +4,6 @@ import hyprland from "./hyprland"
 import tmux from "./tmux"
 import gtk from "./gtk"
 import lowBattery from "./battery"
-import swww from "./swww"
 
 export async function init() {
     try {
@@ -15,7 +14,6 @@ export async function init() {
         lowBattery()
         hyprland()
         css()
-        swww()
     } catch (error) {
         logError(error)
     }

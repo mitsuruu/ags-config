@@ -2,7 +2,6 @@
 , system
 , stdenv
 , writeShellScriptBin
-, swww
 , bun
 , dart-sass
 , fd
@@ -47,7 +46,6 @@ in {
     script = writeShellScriptBin pname ''
       export PATH=$PATH:${dart-sass}/bin
       export PATH=$PATH:${fd}/bin
-      export PATH=$PATH:${swww}/bin
       export GDK_BACKEND=wayland
       ${ags}/bin/ags -b ${pname} -c ${config}/config.js $@
     '';
